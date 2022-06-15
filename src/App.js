@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Header from './components/Header';
+import Main from './components/Main';
+import "./index.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+
+    let bier = "bier"
+
+    const [zahl, setZahl] = useState(1); //unveränderliches Array, default Wert
+    const [karte, setKarte] = useState(false);
+
+    return (
+        <div>
+            <Header bier={bier} />
+            <div>
+                <button onClick={() => setZahl(zahl + 1)}>+1</button>
+                <button onClick={() => setKarte(!karte)}>Karte</button>
+            </div>
+            <Main number={zahl} inhalt="gutes" karte={karte} />
+            <Main number="2" inhalt="schlecht" />
+        </div>
+    )
 }
-
-export default App;
